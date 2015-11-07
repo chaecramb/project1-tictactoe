@@ -14,12 +14,26 @@
  *= require_self
  */
 
+table {
+  table-layout: fixed;
+}
+
  table, td {
   border: 1px solid black;
   border-collapse: collapse;
  }
 
- td {
+ .board {
   height: 100px;
   width: 100px;
+  overflow: hidden;
+ }
+
+.board a {
+  position:relative;
+}
+
+ .board a:hover {
+  position:relative;
+  right: 100px;
  }

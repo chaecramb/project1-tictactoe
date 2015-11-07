@@ -7,20 +7,23 @@
   <section class='row'>
     <table>
       <tr>
-        <td><%= link_to image_tag('tic-tac-toe-hi.png'), @game %></td>
-        <td><%= @game.board[1] %></td>
-        <td><%= @game.board[2] %></td>
+        <td><div class='board'><%= link_to image_tag("#{@symbol}.png"), @game %></div></td>
+        <td><div class='board'><%= link_to image_tag("#{@symbol}.png"), @game %></div></td>
+        <td><div class='board'><%= link_to image_tag("#{@symbol}.png"), @game %></div></td>
       </tr>
       <tr>
-        <td><%= @game.board[3] %></td>
-        <td><%= @game.board[4] %></td>
-        <td><%= @game.board[5] %></td>
+        <td><div class='board'><%= link_to image_tag("#{@symbol}.png"), @game %></div></td>
+        <td><div class='board'><%= link_to image_tag("#{@symbol}.png"), @game %></div></td>
+        <td><div class='board'><%= link_to image_tag("#{@symbol}.png"), @game %></div></td>
       </tr>
       <tr>
-        <td><%= @game.board[6] %></td>
-        <td><%= @game.board[7] %></td>
-        <td><%= @game.board[8] %></td>
+        <td><div class='board'><%= link_to image_tag("#{@symbol}.png"), @game %></div></td>
+        <td><div class='board'><%= link_to image_tag("#{@symbol}.png"), @game %></div></td>
+        <td><div class='board'><%= link_to image_tag("#{@symbol}.png"), @game %></div></td>
       </tr>
     </table>
   </section>
 </main>
+
+<!-- link_to game_path(@game, play: 'tl'), :method => :put do
+          - image_tag Game.image(@game.tl) -->
