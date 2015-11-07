@@ -7,19 +7,19 @@
   <section class='row'>
     <table>
       <tr>
-        <td><div class='board'><%= link_to image_tag("#{@symbol}.png"), @game %></div></td>
-        <td><div class='board'><%= link_to image_tag("#{@symbol}.png"), @game %></div></td>
-        <td><div class='board'><%= link_to image_tag("#{@symbol}.png"), @game %></div></td>
+        <td><div class='board'><%= link_to image_tag("#{@symbol}.png"), {controller: 'games', action: 'update', square: 0}, method: :put %></div></td>
+        <td><div class='board'><%= link_to image_tag("#{@symbol}.png"), {controller: 'games', action: 'update', square: 1}, method: :put %></div></td>
+        <td><div class='board'><%= link_to image_tag("#{@symbol}.png"), {controller: 'games', action: 'update', square: 2}, method: :put %></div></td>
       </tr>
       <tr>
-        <td><div class='board'><%= link_to image_tag("#{@symbol}.png"), @game %></div></td>
-        <td><div class='board'><%= link_to image_tag("#{@symbol}.png"), @game %></div></td>
-        <td><div class='board'><%= link_to image_tag("#{@symbol}.png"), @game %></div></td>
+        <td><div class='board'><%= link_to image_tag("#{@symbol}.png"), {controller: 'games', action: 'update', square: 3}, method: :put %></div></td>
+        <td><div class='board'><%= link_to image_tag("#{@symbol}.png"), {controller: 'games', action: 'update', square: 4}, method: :put %></div></td>
+        <td><div class='board'><%= link_to image_tag("#{@symbol}.png"), {controller: 'games', action: 'update', square: 5}, method: :put %></div></td>
       </tr>
       <tr>
-        <td><div class='board'><%= link_to image_tag("#{@symbol}.png"), @game %></div></td>
-        <td><div class='board'><%= link_to image_tag("#{@symbol}.png"), @game %></div></td>
-        <td><div class='board'><%= link_to image_tag("#{@symbol}.png"), @game %></div></td>
+        <td><div class='board'><%= link_to image_tag("#{@symbol}.png"), {controller: 'games', action: 'update', square: 6}, method: :put %></div></td>
+        <td><div class='board'><%= link_to image_tag("#{@symbol}.png"), {controller: 'games', action: 'update', square: 7}, method: :put %></div></td>
+        <td><div class='board'><%= link_to image_tag("#{@symbol}.png"), {controller: 'games', action: 'update', square: 8}, method: :put %></div></td>
       </tr>
     </table>
   </section>
@@ -27,3 +27,6 @@
 
 <!-- link_to game_path(@game, play: 'tl'), :method => :put do
           - image_tag Game.image(@game.tl) -->
+
+<!-- Works for edit path: -->
+<%#= link_to image_tag("#{@symbol}.png"), edit_game_path(square: 1) %>

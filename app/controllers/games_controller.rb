@@ -27,6 +27,10 @@ class GamesController < ApplicationController
     @game.save  
   end
 
+  def update
+    raise
+  end
+
 
 
 
