@@ -14,14 +14,15 @@ class Game < ActiveRecord::Base
 
   def make_move(options = {})
     moves << Move.new(square: options[:square], player_id: options[:player_id], value: options[:value], game_id: options[:game_id])
+    board[options[:square]] = options[:value]
   end
 
-  private
-  # def winning_game?
-  #   !!WINNING_LINES.detect do |winning_line|
-  #     %w(XXX OOO).include?(winning_line.map { |e| board_symbols[e] }.join)
-  #   end
-  # end
+  #private
+  def winning_game?
+    !!WINNING_LINES.detect do |winning_line|
+      (winning_line & moves.where(player_id: moves.last.player_id).pluck(:square)).size == 3
+    end  
+  end
 
   private
   def drawn_game?

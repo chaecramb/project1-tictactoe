@@ -1,0 +1,12 @@
+<%= form_for(@game, html: {class: 'form'}) do |f| %>
+
+<div class="form-group">
+  <%= f.label :player2_id %><br>
+  <%= f.radio_button :player2_id, 1 %>
+</div>
+
+  <%= f.submit %>
+</div>
+<% end %>
+
+

@@ -1,0 +1,26 @@
+<main class='container'>
+  
+  <section class='row'>
+    <h1><%= "#{@player_1.name} vs. #{@player_2.name} " %></h1>
+  </section>
+
+  <section class='row'>
+    <table>
+      <tr>
+        <td><%= link_to image_tag('tic-tac-toe-hi.png'), @game %></td>
+        <td><%= @game.board[1] %></td>
+        <td><%= @game.board[2] %></td>
+      </tr>
+      <tr>
+        <td><%= @game.board[3] %></td>
+        <td><%= @game.board[4] %></td>
+        <td><%= @game.board[5] %></td>
+      </tr>
+      <tr>
+        <td><%= @game.board[6] %></td>
+        <td><%= @game.board[7] %></td>
+        <td><%= @game.board[8] %></td>
+      </tr>
+    </table>
+  </section>
+</main>

@@ -8,6 +8,56 @@
 </head>
 <body>
 
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand text-muted" href="/">The Bard's Inn Gaming Tavern</a>
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav pull-right">
+        <li class='active'><%= link_to "Games", games_path %></li>
+        <li><%= link_to "Players", players_path %></li>
+        <li><%= link_to "Moves", moves_path %></li>
+        <li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user ? current_user.name : 'Guest' %><span class="caret"></span></a>
+          <ul class="dropdown-menu">
+          <% if user_signed_in? %>
+            <li>
+              <%= link_to "logout", destroy_user_session_path, method: :delete %> 
+            </li>
+            <% else %>
+            <li>
+              <%= link_to "Login", new_user_session_path %>    
+            </li>
+            <li>
+              <%= link_to "Register", new_user_registration_path %>
+            </li> 
+          <% end %>
+          </ul>
+        </li>
+      </ul>
+
+      <div class="col-sm-4 col-md-4 pull-left">
+      <form action="/recipes" class="navbar-form" role="search">
+      <div class="input-group nav-search">
+          <input type="text" class="form-control" placeholder="search games" name="search" id="srch-term">
+          <div class="input-group-btn">
+              <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
+          </div>
+      </div>
+      </form>
+      </div>
+    </div>
+  </div>  
+</nav>
+
 <%= yield %>
 
 </body>
