@@ -17,7 +17,13 @@ class Game < ActiveRecord::Base
     board[options[:square]] = options[:value]
   end
 
-  #private
+  def update_board
+    moves.each do |move|
+      board[move.square] = move.value
+    end
+  end
+
+  private
   def winning_game?
     !!WINNING_LINES.detect do |winning_line|
       (winning_line & moves.where(player_id: moves.last.player_id).pluck(:square)).size == 3

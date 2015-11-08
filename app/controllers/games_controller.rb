@@ -22,13 +22,21 @@ class GamesController < ApplicationController
 
     @symbol = @current_player == @player_1 ? @game.player1_symbol : @game.player2_symbol
 
-
-  
     @game.save  
   end
 
   def update
-    raise
+    @game = Game.find(params[:id])
+    @current_player = User.find(@game.whose_turn)
+    @player_1 = User.find(@game.player1_id)
+    @symbol = @current_player == @player_1 ? @game.player1_symbol : @game.player2_symbol
+
+    @game.moves << Move.create(player_id: @current_player.id ,game_id: params[:id],square: params[:square], value: @symbol)
+
+    @game.update_board
+    @game.save
+
+    redirect_to @game
   end
 
 
@@ -39,7 +47,7 @@ class GamesController < ApplicationController
 private
 
   def game_params
-    params.require(:game).permit(:player2_id)
+    params.require(:game).permit(:player2_id, :id, :square)
   end
 
 end

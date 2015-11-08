@@ -17,14 +17,14 @@ ActiveRecord::Schema.define(version: 20151107163955) do
   enable_extension "plpgsql"
 
   create_table "games", force: :cascade do |t|
-    t.string   "board",             default: [nil, nil, nil, nil, nil, nil, nil, nil, nil],              array: true
+    t.string   "board", default: [nil, nil, nil, nil, nil, nil, nil, nil, nil], array: true
     t.integer  "player1_id"
     t.integer  "player2_id"
     t.integer  "current_player_id"
     t.integer  "winner_id"
     t.boolean  "is_draw"
-    t.datetime "created_at",                                                                null: false
-    t.datetime "updated_at",                                                                null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string   "player1_symbol"
     t.string   "player2_symbol"
   end

@@ -37,3 +37,8 @@ table {
   position:relative;
   right: 100px;
  }
+
+ .board .move {
+  position:relative;
+  right: 100px;
+ }
