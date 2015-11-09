@@ -16,11 +16,11 @@ class Game < ActiveRecord::Base
   end
 
   def ai_playing?
-    player1_id == 2 || player2_id == 2
+    player1_id == 2 || player2_id == 2 || player1_id == 4 || player2_id == 4
   end
 
   def ai_symbol
-    player1_id == 2 ? player1_symbol : player2_symbol
+    ((player1_id == 2) || (player1_id == 4)) ? player1_symbol : player2_symbol
   end
 
   def ai_move
@@ -28,17 +28,56 @@ class Game < ActiveRecord::Base
   end
 
   def load_ai
-    move = Move.create(player_id: 2 ,game_id: id,square: ai_move, value: ai_symbol)
+    ai_id = self.whose_turn
+    if ai_id == 2
+      @move = Move.create(player_id: 2 ,game_id: id,square: ai_move, value: ai_symbol)
+    end
 
-    self.moves << move
+    if ai_id == 4
+
+      @move = minmax(ai_symbol)
+    end
+
+    self.moves << @move
+
   end
 
-  def minmax
-    
+  def score(potential_board)
+    if winning_symbol(potential_board) == ai_symbol
+      return 10
+    elsif winning_symbol(potential_board) == switch(ai_symbol)
+      return -10
+    end
+    0
+  end
+
+  def switch(symbol)
+    symbol == 'x' ? 'o' : 'x'
+  end
+
+  def game_over?(potential_board)
+    # board.winner || board.tie?
+    # this line hasn't been changed yet
+  end
+
+  def minmax(current_symbol, potential_board = nil )
+    # return score potential_board if game_over? potential_board
+    # make above work
+    scores = {}
+    available_spaces.each do |space|
+      potential_board = board.dup
+      potential_board[space] = current_symbol
+      binding.pry
+      # below results in stack level too deep
+      scores[space] = minmax(switch(current_symbol),potential_board)
+    end
+     
+
+    @best_move = best_move current_symbol, scores
   end
 
   def ai_turn?
-    self.whose_turn == 2
+    self.whose_turn == 2 || self.whose_turn == 4
   end
 
   def whose_turn
@@ -67,6 +106,11 @@ class Game < ActiveRecord::Base
   # private
   def drawn_game?
     board.all?
+  end
+
+  def winning_symbol(potential_board)
+    return 'x' if WINNING_LINES.any? { |line| line.all? { |square| potential_board[square] == 'x' } }
+    return 'o' if WINNING_LINES.any? { |line| line.all? { |square| potential_board[square] == 'o' } }
   end
 
 end
