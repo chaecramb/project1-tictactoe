@@ -1,0 +1,84 @@
+<section class='row'>
+  <div class="col-md-4">
+  </div>
+
+  <div class="col-md-4">
+    <h1><%= "#{@player_1.name} vs. #{@player_2.name} " %></h1>
+  </div>
+  
+  <div class="col-md-4">
+  </div>
+</section>
+
+<section class='row'>
+  <div class="col-md-4">
+  </div>
+
+  <div class="col-md-4">
+    <h2>Opponents turn</h2>
+  </div>
+  
+  <div class="col-md-4">
+  </div>
+</section>
+
+<section class='row'>
+  <div class="col-md-4">
+  </div>
+  <div class="col-md-4">
+  <table>
+    <tr>
+      <td><div class='board'>
+        <% if @game.board[0] %>
+        <%= image_tag("#{@game.board[0]}.png", class: 'move') %>
+        <% end %>
+      </div></td>
+      <td><div class='board'>
+        <% if @game.board[1] %>
+        <%= image_tag("#{@game.board[1]}.png", class: 'move') %>
+        <% end %>
+      </div></td>
+        <td><div class='board'>
+          <% if @game.board[2] %>
+          <%= image_tag("#{@game.board[2]}.png", class: 'move') %>
+          <% end %>
+        </div></td>
+      </tr>
+      <tr>
+        <td><div class='board'>
+          <% if @game.board[3] %>
+          <%= image_tag("#{@game.board[3]}.png", class: 'move') %>
+          <% end %>
+        </div></td>
+        <td><div class='board'>
+          <% if @game.board[4] %>
+          <%= image_tag("#{@game.board[4]}.png", class: 'move') %>
+          <% end %>
+        </div></td>
+        <td><div class='board'>
+          <% if @game.board[5] %>
+          <%= image_tag("#{@game.board[5]}.png", class: 'move') %>
+          <% end %></div></td>
+        </tr>
+        <tr>
+          <td><div class='board'>
+            <% if @game.board[6] %>
+            <%= image_tag("#{@game.board[6]}.png", class: 'move') %>
+            <% end %>
+          </div></td>
+          <td><div class='board'>
+            <% if @game.board[7] %>
+            <%= image_tag("#{@game.board[7]}.png", class: 'move') %>
+            <% end %>
+          </div></td>
+          <td><div class='board'>
+            <% if @game.board[8] %>
+            <%= image_tag("#{@game.board[8]}.png", class: 'move') %>
+            <% end %>
+          </div></td>
+        </tr>
+      </table>
+      </div>
+      <div class="col-md-4">
+      </div>
+    </section>

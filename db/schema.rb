@@ -11,22 +11,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151107163955) do
+ActiveRecord::Schema.define(version: 20151108131431) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "games", force: :cascade do |t|
-    t.string   "board", default: [nil, nil, nil, nil, nil, nil, nil, nil, nil], array: true
+    t.string   "board",             default: [nil, nil, nil, nil, nil, nil, nil, nil, nil],              array: true
     t.integer  "player1_id"
     t.integer  "player2_id"
     t.integer  "current_player_id"
     t.integer  "winner_id"
     t.boolean  "is_draw"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                                                                null: false
+    t.datetime "updated_at",                                                                null: false
     t.string   "player1_symbol"
     t.string   "player2_symbol"
+  end
+
+  create_table "games_users", id: false, force: :cascade do |t|
+    t.integer "game_id", null: false
+    t.integer "user_id", null: false
   end
 
   create_table "moves", force: :cascade do |t|

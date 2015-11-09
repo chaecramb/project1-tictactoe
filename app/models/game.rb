@@ -1,5 +1,9 @@
 class Game < ActiveRecord::Base
   has_many :moves
+  has_and_belongs_to_many :users
+
+  validates :player1_symbol, inclusion: { in: %w(o x) }
+  validates :player2_symbol, inclusion: { in: %w(o x) }
 
   WINNING_LINES = [ [0,1,2], [3,4,5], [6,7,8], [0,3,6], [1,4,7], [2,5,8], [0,4,8], [2,4,6] ]
 
@@ -23,14 +27,14 @@ class Game < ActiveRecord::Base
     end
   end
 
-  private
+  # private
   def winning_game?
     !!WINNING_LINES.detect do |winning_line|
       (winning_line & moves.where(player_id: moves.last.player_id).pluck(:square)).size == 3
     end  
   end
 
-  private
+  # private
   def drawn_game?
     board.all?
   end

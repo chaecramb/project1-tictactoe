@@ -1,0 +1,67 @@
+<section class='row'>
+  <h1><%= "#{@player_1.name} vs. #{@player_2.name} " %></h1>
+
+  <h2>
+     <% if @game.is_draw %>
+     <%= 'The game is a draw!' %>
+     <% else %>
+     <%= "#{@winner.name} wins!!!" %>
+     <% end %>
+   </h2>
+</section>
+
+<section class='row'>
+  <table>
+    <tr>
+      <td><div class='board'>
+        <% if @game.board[0] %>
+        <%= image_tag("#{@game.board[0]}.png", class: 'move') %>
+        <% end %>
+      </div></td>
+      <td><div class='board'>
+        <% if @game.board[1] %>
+        <%= image_tag("#{@game.board[1]}.png", class: 'move') %>
+        <% end %>
+      </div></td>
+      <td><div class='board'>
+        <% if @game.board[2] %>
+        <%= image_tag("#{@game.board[2]}.png", class: 'move') %>
+        <% end %>
+      </div></td>
+    </tr>
+    <tr>
+      <td><div class='board'>
+        <% if @game.board[3] %>
+        <%= image_tag("#{@game.board[3]}.png", class: 'move') %>
+        <% end %>
+      </div></td>
+      <td><div class='board'>
+        <% if @game.board[4] %>
+        <%= image_tag("#{@game.board[4]}.png", class: 'move') %>
+        <% end %>
+      </div></td>
+      <td><div class='board'>
+        <% if @game.board[5] %>
+        <%= image_tag("#{@game.board[5]}.png", class: 'move') %>
+        <% end %></div></td>
+      </tr>
+      <tr>
+        <td><div class='board'>
+          <% if @game.board[6] %>
+          <%= image_tag("#{@game.board[6]}.png", class: 'move') %>
+          <% end %>
+        </div></td>
+        <td><div class='board'>
+          <% if @game.board[7] %>
+          <%= image_tag("#{@game.board[7]}.png", class: 'move') %>
+          <% end %>
+        </div></td>
+        <td><div class='board'>
+          <% if @game.board[8] %>
+          <%= image_tag("#{@game.board[8]}.png", class: 'move') %>
+          <% end %>
+        </div></td>
+      </tr>
+    </table>
+  </section>
+  
