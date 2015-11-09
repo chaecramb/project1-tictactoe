@@ -55,7 +55,7 @@ class GamesController < ApplicationController
 
     @game.save
 
-    if @game.ai_playing?
+    if @game.ai_playing? && !@game.finished?
       @game.load_ai if @game.ai_turn?
       @game.update_board
 

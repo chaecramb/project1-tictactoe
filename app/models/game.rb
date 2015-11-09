@@ -7,6 +7,10 @@ class Game < ActiveRecord::Base
 
   WINNING_LINES = [ [0,1,2], [3,4,5], [6,7,8], [0,3,6], [1,4,7], [2,5,8], [0,4,8], [2,4,6] ]
 
+  def available_spaces
+    ((0..8).to_a - Move.where(game_id: id).pluck(:square))
+  end
+
   def finished?
     !!(self.winner_id || self.is_draw)
   end
@@ -20,13 +24,17 @@ class Game < ActiveRecord::Base
   end
 
   def ai_move
-    ((0..8).to_a - Move.where(game_id: id).pluck(:square)).sample
+    available_spaces.sample
   end
 
   def load_ai
     move = Move.create(player_id: 2 ,game_id: id,square: ai_move, value: ai_symbol)
 
     self.moves << move
+  end
+
+  def minmax
+    
   end
 
   def ai_turn?
