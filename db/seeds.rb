@@ -15,4 +15,7 @@
 # g.moves << Move.create(player_id: 1, game_id: 1, square: 1) 
 
 User.create(name: 'Guest', email:'guest@email.example', password: 'password', created_at: Time.now, updated_at: Time.now)
+User.create(name: 'DumbAI', email:'dumbai@email.example', password: 'password', created_at: Time.now, updated_at: Time.now)
+User.create(name: 'MidAI', email:'midai@email.example', password: 'password', created_at: Time.now, updated_at: Time.now)
+User.create(name: 'StrongAI', email:'strongai@email.example', password: 'password', created_at: Time.now, updated_at: Time.now)
 User.create(name: 'Chae', email:'chae@chae.example', password: 'password', created_at: Time.now, updated_at: Time.now)

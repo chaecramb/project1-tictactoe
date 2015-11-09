@@ -28,10 +28,7 @@ class GamesController < ApplicationController
     @winner = User.find(@game.winner_id) if @game.winner_id
 
     unless @game.finished?
-    
-
       @symbol = @current_player == @player_1 ? @game.player1_symbol : @game.player2_symbol
-
       @game.save 
     end 
   end
@@ -40,6 +37,7 @@ class GamesController < ApplicationController
     @game = Game.find(params[:id])
     @current_player = User.find(@game.whose_turn)
     @player_1 = User.find(@game.player1_id)
+    @player_2 = User.find(@game.player2_id)
     @symbol = @current_player == @player_1 ? @game.player1_symbol : @game.player2_symbol
 
     move = Move.create(player_id: @current_player.id ,game_id: params[:id],square: params[:square], value: @symbol)
@@ -54,7 +52,23 @@ class GamesController < ApplicationController
         @game.is_draw = 'true' if @game.drawn_game? 
       end
     end
+
     @game.save
+
+    if @game.ai_playing?
+      @game.load_ai if @game.ai_turn?
+      @game.update_board
+
+      if @game.moves.size >= 5
+        if @game.winning_game?
+          @game.winner_id = @game.moves.last.player_id
+        else
+          @game.is_draw = 'true' if @game.drawn_game? 
+        end
+      end
+
+      @game.save
+    end
 
     redirect_to @game
   end

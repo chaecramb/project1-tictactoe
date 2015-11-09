@@ -11,6 +11,28 @@ class Game < ActiveRecord::Base
     !!(self.winner_id || self.is_draw)
   end
 
+  def ai_playing?
+    player1_id == 2 || player2_id == 2
+  end
+
+  def ai_symbol
+    player1_id == 2 ? player1_symbol : player2_symbol
+  end
+
+  def ai_move
+    ((0..8).to_a - Move.where(game_id: id).pluck(:square)).sample
+  end
+
+  def load_ai
+    move = Move.create(player_id: 2 ,game_id: id,square: ai_move, value: ai_symbol)
+
+    self.moves << move
+  end
+
+  def ai_turn?
+    self.whose_turn == 2
+  end
+
   def whose_turn
     return player1_id if moves.empty?
     moves.last.player_id == player1_id ? player2_id : player1_id
