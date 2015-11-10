@@ -14,12 +14,17 @@
  *= require_self
  */
 
+@font-face {
+    font-family: 'Chalk Hand Lettering';
+    src:url('fonts/Colored-Crayons.ttf') format('truetype');
+} 
+
 table {
   table-layout: fixed;
 }
 
  table, td {
-  border: 10px solid black;
+  border: 10px solid rgba(255, 255, 255, .7);
   border-collapse: collapse;
  }
 
@@ -47,4 +52,36 @@ table {
 
  h1 {
   text-align: center;
+  font-family: 'Chalk Hand Lettering';
+  color: rgba(255, 255, 255, 1);
+  font-size: 6em;
+  margin: 5px;
  }
+
+ h3 {
+  font-family: 'Chalk Hand Lettering';
+  color: rgba(255, 255, 255, 1);
+  font-size: 3em;
+  margin: 10px;
+ }
+
+ body {
+  background-image: url("wildtextures-weathered-table-top1.jpg");
+  background-size: cover;
+ }
+
+ .board img {
+  opacity: 0.8;
+ }
+
+ p {
+  font-family: 'Chalk Hand Lettering';
+  color: rgba(255, 255, 255, 1);
+  font-size: 3em;
+ }
+
+ .avatar {
+  display: block;
+  margin: 0 auto 20px auto;
+ }
+
