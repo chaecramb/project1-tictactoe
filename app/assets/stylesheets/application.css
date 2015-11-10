@@ -19,7 +19,7 @@ table {
 }
 
  table, td {
-  border: 1px solid black;
+  border: 10px solid black;
   border-collapse: collapse;
  }
 
@@ -35,10 +35,16 @@ table {
 
  .board a:hover {
   position:relative;
-  right: 100px;
+  right: 103px;
+  top: 5px;
  }
 
  .board .move {
   position:relative;
-  right: 100px;
+  right: 103px;
+  top: 5px;
+ }
+
+ h1 {
+  text-align: center;
  }
