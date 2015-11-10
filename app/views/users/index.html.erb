@@ -8,9 +8,7 @@
           <p><%= image_tag user.user_avatar.thumb.url, class: 'avatar' %></p>
           <p> Wins: <%= user.wins %></p>
           <p> Losses: <%= user.loses %></p>
-          <%# game = {player2_id: user.id} %>
-          <%= link_to 'Challenge', {controller: 'games', action: 'create', game: {player2_id: user.id}}, method: :post %>
-          <!-- want this to post to games/new with player2 details -->
+          <%= link_to 'Challenge!', {controller: 'games', action: 'create', game: {player2_id: user.id}}, method: :post %>
         </div>
       </div>
     <% end %>

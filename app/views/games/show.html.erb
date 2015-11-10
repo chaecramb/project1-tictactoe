@@ -16,7 +16,7 @@
 
     <% if @game.finished?%>
       <%= render 'games/finished', game: @game, player_1: @player_1, player_2: @player_2, symbol: @symbol, winner: @winner %>
-    <% elsif (current_user.id == Game.find(params[:id]).whose_turn) || (Game.find(params[:id]).users.pluck(:id).include? 1) %>
+    <% elsif ( current_user.id == Game.find(params[:id]).whose_turn) || (Game.find(params[:id]).users.pluck(:id).include? 1) %>
       <%= render 'games/in_progress', game: @game, player_1: @player_1, player_2: @player_2, symbol: @symbol %>
     <% else %>
       <%= render 'games/opponent_turn', game: @game, player_1: @player_1, player_2: @player_2, symbol: @symbol %>
