@@ -11,21 +11,21 @@
     <tr>
       <td><div class='board'>
         <% if @game.board[0] %>
-        <%= image_tag("#{@game.board[0]}.png", class: 'move') %>
+        <%= image_tag("#{@game.board[0]}-white.png", class: 'move') %>
         <% else %>
         <%= link_to image_tag("#{@symbol}-red.png"), {controller: 'games', action: 'update', square: 0}, method: :put %>
         <% end %>
       </div></td>
       <td><div class='board'>
         <% if @game.board[1] %>
-        <%= image_tag("#{@game.board[1]}.png", class: 'move') %>
+        <%= image_tag("#{@game.board[1]}-white.png", class: 'move') %>
         <% else %>
         <%= @game.board[1] || (link_to image_tag("#{@symbol}-red.png"), {controller: 'games', action: 'update', square: 1}, method: :put) %>
         <% end %>
         </div></td>
         <td><div class='board'>
           <% if @game.board[2] %>
-          <%= image_tag("#{@game.board[2]}.png", class: 'move') %>
+          <%= image_tag("#{@game.board[2]}-white.png", class: 'move') %>
           <% else %>
           <%= @game.board[2] || (link_to image_tag("#{@symbol}-red.png"), {controller: 'games', action: 'update', square: 2}, method: :put) %>
           <% end %>
@@ -34,21 +34,21 @@
       <tr>
         <td><div class='board'>
           <% if @game.board[3] %>
-          <%= image_tag("#{@game.board[3]}.png", class: 'move') %>
+          <%= image_tag("#{@game.board[3]}-white.png", class: 'move') %>
           <% else %>
           <%= @game.board[3] || (link_to image_tag("#{@symbol}-red.png"), {controller: 'games', action: 'update', square: 3}, method: :put) %>
           <% end %>
         </div></td>
         <td><div class='board'>
           <% if @game.board[4] %>
-          <%= image_tag("#{@game.board[4]}.png", class: 'move') %>
+          <%= image_tag("#{@game.board[4]}-white.png", class: 'move') %>
           <% else %>
           <%= @game.board[4] || (link_to image_tag("#{@symbol}-red.png"), {controller: 'games', action: 'update', square: 4}, method: :put) %>
           <% end %>
         </div></td>
         <td><div class='board'>
           <% if @game.board[5] %>
-          <%= image_tag("#{@game.board[5]}.png", class: 'move') %>
+          <%= image_tag("#{@game.board[5]}-white.png", class: 'move') %>
           <% else %>
           <%= @game.board[5] || (link_to image_tag("#{@symbol}-red.png"), {controller: 'games', action: 'update', square: 5}, method: :put) %>
           <% end %></div></td>
@@ -56,21 +56,21 @@
         <tr>
           <td><div class='board'>
             <% if @game.board[6] %>
-            <%= image_tag("#{@game.board[6]}.png", class: 'move') %>
+            <%= image_tag("#{@game.board[6]}-white.png", class: 'move') %>
             <% else %>
             <%= @game.board[6] || (link_to image_tag("#{@symbol}-red.png"), {controller: 'games', action: 'update', square: 6}, method: :put) %>
             <% end %>
           </div></td>
           <td><div class='board'>
             <% if @game.board[7] %>
-            <%= image_tag("#{@game.board[7]}.png", class: 'move') %>
+            <%= image_tag("#{@game.board[7]}-white.png", class: 'move') %>
             <% else %>
             <%= @game.board[7] || (link_to image_tag("#{@symbol}-red.png"), {controller: 'games', action: 'update', square: 7}, method: :put) %>
             <% end %>
           </div></td>
           <td><div class='board'>
             <% if @game.board[8] %>
-            <%= image_tag("#{@game.board[8]}.png", class: 'move') %>
+            <%= image_tag("#{@game.board[8]}-white.png", class: 'move') %>
             <% else %>
             <%= @game.board[8] || (link_to image_tag("#{@symbol}-red.png"), {controller: 'games', action: 'update', square: 8}, method: :put) %>
             <% end %>
