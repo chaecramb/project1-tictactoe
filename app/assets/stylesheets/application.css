@@ -74,10 +74,16 @@ table {
   opacity: 0.8;
  }
 
- p {
+ h4 {
   font-family: 'Chalk Hand Lettering';
   color: rgba(255, 255, 255, 1);
   font-size: 3em;
+ }
+
+ p {
+  font-family: 'Chalk Hand Lettering';
+  color: rgba(255, 255, 255, 1);
+  font-size: 2em;
  }
 
  .avatar {

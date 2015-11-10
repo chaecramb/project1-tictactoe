@@ -2,9 +2,9 @@
 <section class='row'>
   <div class="col-md-4">
   <%= image_tag @player_1.user_avatar.thumb.url, class: 'avatar' %>
-    <p>Symbol: <%= @game.player1_symbol %></p>
-    <p>Wins: <%= @player_1.wins %></p>
-    <p>Losses: <%= @player_1.loses %></p>
+    <h4>Symbol: <%= @game.player1_symbol %></h4>
+    <h4>Wins: <%= @player_1.wins %></h4>
+    <h4>Losses: <%= @player_1.loses %></h4>
   </div>
   <div class="col-md-4">
   <table>
@@ -80,8 +80,8 @@
       </div>
       <div class="col-md-4">
       <%= image_tag @player_2.user_avatar.thumb.url, class: 'avatar' %>
-        <p>Symbol: <%= @game.player2_symbol %></p>
-        <p>Wins: <%= @player_2.wins %></p>
-        <p>Losses: <%= @player_2.loses %></p>
+        <h4>Symbol: <%= @game.player2_symbol %></h4>
+        <h4>Wins: <%= @player_2.wins %></h4>
+        <h4>Losses: <%= @player_2.loses %></h4>
       </div>
     </section>
