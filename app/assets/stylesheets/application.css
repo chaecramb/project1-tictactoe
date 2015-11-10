@@ -101,10 +101,30 @@ table {
   border-color: #ccc;
 }
 
+.games {
+  text-align: center;
+  margin: 0 auto 0 auto;
+  display: block;
+  background-color: rgba(153, 204, 255,0.7);
+  padding: 15px 15px 15px 15px;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  border-color: #ccc;
+}
+
+.games a {
+  margin-right: 30px;
+}
+
 .players a {
   font-family: 'Chalk Hand Lettering';
   color: rgba(255, 0, 0, 0.8);
   font-size: 3em;
   margin-left: 60px;
   margin-right: 60px;
+}
+
+.new-game {
+  margin: 40px;
+  text-align: center;
 }
