@@ -7,8 +7,19 @@ class Game < ActiveRecord::Base
 
   WINNING_LINES = [ [0,1,2], [3,4,5], [6,7,8], [0,3,6], [1,4,7], [2,5,8], [0,4,8], [2,4,6] ]
 
+  EMPTY_BOARD = [nil,nil,nil,nil,nil,nil,nil,nil,nil]
+
   def available_spaces
     ((0..8).to_a - Move.where(game_id: id).pluck(:square))
+  end
+
+  def available_spaces_minmax(potential_board)
+    i = -1
+    spaces = potential_board.map do |space| 
+      i += 1
+      space == nil ? i : nil 
+    end
+    spaces.compact
   end
 
   def finished?
@@ -34,18 +45,18 @@ class Game < ActiveRecord::Base
     end
 
     if ai_id == 4
-
-      @move = minmax(ai_symbol)
+      minmax(ai_symbol, board)
+      @move = Move.create(player_id: 4 ,game_id: id,square: @best_choice, value: ai_symbol)
     end
 
     self.moves << @move
 
   end
 
-  def score(potential_board)
-    if winning_symbol(potential_board) == ai_symbol
+  def score(board)
+    if winning_symbol(board) == ai_symbol
       return 10
-    elsif winning_symbol(potential_board) == switch(ai_symbol)
+    elsif winning_symbol(board) == switch(ai_symbol)
       return -10
     end
     0
@@ -55,25 +66,34 @@ class Game < ActiveRecord::Base
     symbol == 'x' ? 'o' : 'x'
   end
 
-  def game_over?(potential_board)
-    # board.winner || board.tie?
-    # this line hasn't been changed yet
+  def tie?(board)
+    board.compact.size == 9
   end
 
-  def minmax(current_symbol, potential_board = nil )
-    # return score potential_board if game_over? potential_board
-    # make above work
-    scores = {}
-    available_spaces.each do |space|
-      potential_board = board.dup
-      potential_board[space] = current_symbol
-      binding.pry
-      # below results in stack level too deep
-      scores[space] = minmax(switch(current_symbol),potential_board)
-    end
-     
+  def game_over?(board)
+    winning_symbol(board) || tie?(board)
+  end
 
-    @best_move = best_move current_symbol, scores
+  def best_move(current_symbol, scores)
+    if current_symbol == ai_symbol
+      scores.max_by { |_k, v| v }
+    else
+      scores.min_by { |_k, v| v }
+    end
+  end
+
+  def minmax(current_symbol, board)
+    return score board if game_over? board
+    scores = {}
+  
+    available_spaces_minmax(board).each do |space|
+      potential_board ||= board.dup
+      potential_board[space] = current_symbol
+      scores[space] = minmax(switch(current_symbol),potential_board)
+
+    end
+    @best_choice, best_score = best_move current_symbol, scores
+    best_score
   end
 
   def ai_turn?
