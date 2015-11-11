@@ -1,0 +1,22 @@
+<section class='row'>
+  <div class="col-md-12 players-wrapper">
+    <h1>Leaderboard</h1>
+    <table class="leadertable">
+      <th>  
+        <td><h3>Wins</h3></td>
+        <td><h3>Draws</h3></td>
+        <td><h3>Losses</h3></td>
+        <td><h3>Points</h3></td>
+      </th>
+      <% @users.each do |user| %> 
+        <tr>
+          <td class='leaderboard'><h4><span><%= user.name %></h4></span></td>
+          <td class='leaderboard'><h4><span class="lb-number"><%= user.wins %></h4></span></td>
+          <td class='leaderboard'><h4><span class="lb-number"><%= user.draws %></h4></span></td>
+          <td class='leaderboard'><h4><span class="lb-number"><%= user.loses %></h4></span></td>
+          <td class='leaderboard'><h4><span class="lb-number"><%= user.points %></h4></span></td>
+        </tr>
+      <% end %> 
+    </table>
+  </div>
+</section>
