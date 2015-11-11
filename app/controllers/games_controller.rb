@@ -6,6 +6,10 @@ class GamesController < ApplicationController
     @game = Game.new
   end
 
+  def index
+    redirect_to(new_user_session_path) unless current_user
+  end
+
   def create
     game = Game.create(game_params)
     # game.player1_id = if current_user
@@ -50,7 +54,7 @@ class GamesController < ApplicationController
     @game.moves << move
     @game.update_board
 
-    if @game.moves.size >= 5 && !@game.ai_playing?
+    if @game.moves.size >= 5
       if @game.winning_game?
         @game.winner_id = @game.moves.last.player_id
         winner = User.find(@game.winner_id)
@@ -60,8 +64,8 @@ class GamesController < ApplicationController
         loser = User.find(@game.moves.last(2).first.player_id)
         loser.loses += 1
         loser.save
-      else
-        @game.is_draw = 'true' if @game.drawn_game? 
+      elsif @game.drawn_game? 
+        @game.is_draw = 'true' 
         @player_1.draws += 1
         @player_1.points += 1
         @player_2.draws += 1
@@ -87,8 +91,8 @@ class GamesController < ApplicationController
           loser = User.find(@game.moves.last(2).first.player_id)
           loser.loses += 1
           loser.save
-        else
-          @game.is_draw = 'true' if @game.drawn_game?
+        elsif @game.drawn_game?
+          @game.is_draw = 'true' 
           @player_1.draws += 1
           @player_1.points += 1
           @player_2.draws += 1

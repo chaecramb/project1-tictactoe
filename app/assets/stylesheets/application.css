@@ -90,6 +90,14 @@ table {
   margin: 5px;
  }
 
+ h2 {
+  text-align: center;
+  font-family: 'Chalk Hand Lettering';
+  color: rgba(255, 255, 255, 1);
+  font-size: 4em;
+  margin: 5px;
+ }
+
  h3 {
   font-family: 'Chalk Hand Lettering';
   color: rgba(255, 255, 255, 1);
@@ -215,4 +223,12 @@ th td {
 
 .edit a {
   color: #0082C3;
+}
+
+.finish-message {
+  text-align: center;
+}
+
+.sidebar {
+  margin-top: 25px;
 }
