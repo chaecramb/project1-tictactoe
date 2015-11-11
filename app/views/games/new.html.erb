@@ -12,7 +12,7 @@
         <%= f.select :player2_id, @users.map {|c| [c.name, c.id] } %>
       </div>
       <p>Toss coin</p>
-      <%= f.submit "Toss coin!", :type => :image, :src => "https://upload.wikimedia.org/wikipedia/commons/2/29/USSR-mongolia_Spaceflight_Coin.png", :class => "coin" %>
+      <%= f.submit "Toss coin!", :type => :image, :src => "/coin.png", :class => "coin" %>
     <% end %>
 </div>
 </div>
