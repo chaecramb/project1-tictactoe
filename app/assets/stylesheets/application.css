@@ -278,3 +278,7 @@ display: block;
   text-decoration: underline;
 }
 
+.desc {
+  margin-top: 10px;
+}
+
