@@ -8,6 +8,11 @@
   <%= devise_error_messages! %>
 
   <div class="field form-group">
+    <%= f.label :name %><br />
+    <%= f.text_field :name, autofocus: true, :class => "form-control" %>
+  </div>
+
+  <div class="field form-group">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, :class => "form-control" %>
   </div>
@@ -29,6 +34,11 @@
   <div class="field form-group">
     <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
     <%= f.password_field :current_password, autocomplete: "off", :class => "form-control" %>
+  </div>
+
+  <div class="field form-group">
+    <%= f.label :user_avatar %><br />
+    <%= f.file_field :user_avatar %>
   </div>
 
   <div class="actions form-group">

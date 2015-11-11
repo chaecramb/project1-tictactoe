@@ -246,5 +246,8 @@ th td {
    margin: 5px;
 }
 
+.form-group label {
+  margin-bottom: 7px;
+}
 
 
