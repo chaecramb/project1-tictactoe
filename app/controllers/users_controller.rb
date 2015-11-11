@@ -3,8 +3,14 @@ class UsersController < ApplicationController
     @users = User.all_except(current_user)
   end
 
-  def leaderboard
-
+  def show
+    @user = User.find(params[:id])
   end
+
+  private
+
+    def user_params
+      params.require(:user).permit(:id)
+    end
 
 end

@@ -1,4 +1,14 @@
 <section class='row'>
+  <div class="col-md-4">
+  <%= image_tag @player_1.user_avatar.thumb.url, class: 'avatar' %>
+    <h4 class="symbol">Symbol: <%= @game.player1_symbol %></h4>
+    <h4>Wins: <span class="number"><%= @player_1.wins %></span></h4>
+    <h4>Draws: <span class="number"><%= @player_1.draws %></span></h4>
+    <h4>Losses: <span class="number"><%= @player_1.loses %></span></h4>
+  </div>
+
+
+
   <h1><%= "#{@player_1.name} vs. #{@player_2.name} " %></h1>
 
   <h2>

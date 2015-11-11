@@ -208,3 +208,11 @@ th td {
   margin-right: auto;
   margin-left: auto;
 }
+
+.players .edit {
+  margin-top: 10px;
+}
+
+.edit a {
+  color: #0082C3;
+}
