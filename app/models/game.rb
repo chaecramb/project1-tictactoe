@@ -27,11 +27,11 @@ class Game < ActiveRecord::Base
   end
 
   def ai_playing?
-    player1_id == 2 || player2_id == 2 || player1_id == 3 || player2_id == 3 ||player1_id == 4 || player2_id == 4
+    player1_id == 2 || player2_id == 2 || player1_id == 3 || player2_id == 3 ||player1_id == 4 || player2_id == 4 || player1_id == 5 || player2_id == 5 ||player1_id == 6 || player2_id == 6
   end
 
   def ai_symbol
-    ((player1_id == 2) || (player1_id == 3) || (player1_id == 4)) ? player1_symbol : player2_symbol
+    ((player1_id == 2) || (player1_id == 3) || (player1_id == 4) || (player1_id == 5) || (player1_id == 6)) ? player1_symbol : player2_symbol
   end
 
   def ai_move
@@ -52,6 +52,25 @@ class Game < ActiveRecord::Base
     if ai_id == 4
       minmax(ai_symbol, board)
       @move = Move.create(player_id: 4 ,game_id: id,square: @best_choice, value: ai_symbol)
+    end
+
+    if ai_id == 5
+      if [true, false].sample
+        minmax(ai_symbol, board)
+        @move = Move.create(player_id: 5 ,game_id: id,square: @best_choice, value: ai_symbol)
+      else
+        @move = Move.create(player_id: 5 ,game_id: id,square: ai_move, value: ai_symbol)
+      end
+    end
+
+    if ai_id == 6
+      if [true, false].sample
+        minmax(ai_symbol, board)
+        @move = Move.create(player_id: 6 ,game_id: id,square: @best_choice, value: ai_symbol)
+      else
+        maxmin(ai_symbol, board)
+        @move = Move.create(player_id: 6 ,game_id: id,square: @best_choice, value: ai_symbol)
+      end
     end
 
     self.moves << @move
@@ -125,7 +144,7 @@ class Game < ActiveRecord::Base
   end
 
   def ai_turn?
-    self.whose_turn == 2 || self.whose_turn == 3 || self.whose_turn == 4
+    self.whose_turn == 2 || self.whose_turn == 3 || self.whose_turn == 4 || self.whose_turn == 5 || self.whose_turn == 6
   end
 
   def whose_turn

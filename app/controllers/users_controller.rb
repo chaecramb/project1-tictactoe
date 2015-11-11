@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
   def index
-    @users = User.all_except(current_user.id).search(params[:search])
+    if current_user
+      @users = User.all_except(current_user.id).search(params[:search])
+    else
+      @users = User.search(params[:search])
+    end
   end
 
   def show

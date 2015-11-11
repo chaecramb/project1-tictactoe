@@ -16,6 +16,8 @@
 
 User.create(name: 'Guest', email:'guest@email.example', password: 'password', created_at: Time.now, updated_at: Time.now, role: 'player')
 User.create(name: 'DumbAI', email:'dumbai@email.example', password: 'password', created_at: Time.now, updated_at: Time.now, role: 'player')
-User.create(name: 'KindAI', email:'midai@email.example', password: 'password', created_at: Time.now, updated_at: Time.now, role: 'player')
+User.create(name: 'KindAI', email:'kindai@email.example', password: 'password', created_at: Time.now, updated_at: Time.now, role: 'player')
 User.create(name: 'StrongAI', email:'strongai@email.example', password: 'password', created_at: Time.now, updated_at: Time.now, role: 'player')
+User.create(name: 'MedAI', email:'medai@email.example', password: 'password', created_at: Time.now, updated_at: Time.now, role: 'player')
+User.create(name: 'NeuroticAI', email:'neuroticai@email.example', password: 'password', created_at: Time.now, updated_at: Time.now, role: 'player')
 User.create(name: 'Chae', email:'chae@email.example', password: 'password', created_at: Time.now, updated_at: Time.now, role: 'player')
