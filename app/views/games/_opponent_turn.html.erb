@@ -1,43 +1,25 @@
 <section class='row'>
-  <div class="col-md-4">
-  </div>
-
-  <div class="col-md-4">
-    <h1><%= "#{@player_1.name} vs. #{@player_2.name} " %></h1>
-  </div>
-  
-  <div class="col-md-4">
-  </div>
-</section>
-
-<section class='row'>
-  <div class="col-md-4">
-  </div>
-
-  <div class="col-md-4">
-    <h2>Opponents turn</h2>
+  <div class="col-md-4 sidebar">
+    <%= image_tag @player_1.user_avatar.thumb.url, class: 'avatar' %>
+    <h4 class="symbol">Symbol: <%= @game.player1_symbol %></h4>
+    <h4>Wins: <span class="number"><%= @player_1.wins %></span></h4>
+    <h4>Draws: <span class="number"><%= @player_1.draws %></span></h4>
+    <h4>Losses: <span class="number"><%= @player_1.loses %></span></h4>
   </div>
   
   <div class="col-md-4">
-  </div>
-</section>
-
-<section class='row'>
-  <div class="col-md-4">
-  </div>
-  <div class="col-md-4">
-  <table>
-    <tr>
-      <td><div class='board'>
-        <% if @game.board[0] %>
-        <%= image_tag("#{@game.board[0]}.png", class: 'move') %>
-        <% end %>
-      </div></td>
-      <td><div class='board'>
-        <% if @game.board[1] %>
-        <%= image_tag("#{@game.board[1]}.png", class: 'move') %>
-        <% end %>
-      </div></td>
+    <table>
+      <tr>
+        <td><div class='board'>
+          <% if @game.board[0] %>
+          <%= image_tag("#{@game.board[0]}.png", class: 'move') %>
+          <% end %>
+        </div></td>
+        <td><div class='board'>
+          <% if @game.board[1] %>
+          <%= image_tag("#{@game.board[1]}.png", class: 'move') %>
+          <% end %>
+        </div></td>
         <td><div class='board'>
           <% if @game.board[2] %>
           <%= image_tag("#{@game.board[2]}.png", class: 'move') %>
@@ -78,7 +60,18 @@
           </div></td>
         </tr>
       </table>
-      </div>
-      <div class="col-md-4">
-      </div>
-    </section>
+      <h4>Opponents turn</h2>
+    </div>
+    <div class="col-md-4">
+    </div>
+
+    <div class="col-md-4 sidebar">
+      <%= image_tag @player_2.user_avatar.thumb.url, class: 'avatar' %>
+      <h4 class="symbol">Symbol: <%= @game.player2_symbol %></h4>
+      <h4>Wins: <span class="number"><%= @player_2.wins %></span></h4>
+      <h4>Draws: <span class="number"><%= @player_2.draws %></span></h4>
+      <h4>Losses: <span class="number"><%= @player_2.loses %></span></h4>
+    </div>
+  </section>
+
+ 
