@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
   after_create :set_default_role
   has_and_belongs_to_many :games
 
+  scope :all_except, ->(user) { where.not(id: user) }
+
   def role?(role_to_compare)
     self.role.to_s == role_to_compare.to_s
   end

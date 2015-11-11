@@ -62,6 +62,15 @@ class Game < ActiveRecord::Base
     0
   end
 
+  def reverse_score(board)
+    if winning_symbol(board) == ai_symbol
+      return -10
+    elsif winning_symbol(board) == switch(ai_symbol)
+      return 10
+    end
+    0
+  end
+
   def switch(symbol)
     symbol == 'x' ? 'o' : 'x'
   end
