@@ -27,11 +27,11 @@ class Game < ActiveRecord::Base
   end
 
   def ai_playing?
-    player1_id == 2 || player2_id == 2 || player1_id == 4 || player2_id == 4
+    player1_id == 2 || player2_id == 2 || player1_id == 3 || player2_id == 3 ||player1_id == 4 || player2_id == 4
   end
 
   def ai_symbol
-    ((player1_id == 2) || (player1_id == 4)) ? player1_symbol : player2_symbol
+    ((player1_id == 2) || (player1_id == 3) || (player1_id == 4)) ? player1_symbol : player2_symbol
   end
 
   def ai_move
@@ -42,6 +42,11 @@ class Game < ActiveRecord::Base
     ai_id = self.whose_turn
     if ai_id == 2
       @move = Move.create(player_id: 2 ,game_id: id,square: ai_move, value: ai_symbol)
+    end
+
+    if ai_id == 3
+      maxmin(ai_symbol, board)
+      @move = Move.create(player_id: 3 ,game_id: id,square: @best_choice, value: ai_symbol)
     end
 
     if ai_id == 4
@@ -105,8 +110,22 @@ class Game < ActiveRecord::Base
     best_score
   end
 
+  def maxmin(current_symbol, board)
+    return reverse_score board if game_over? board
+    scores = {}
+  
+    available_spaces_minmax(board).each do |space|
+      potential_board ||= board.dup
+      potential_board[space] = current_symbol
+      scores[space] = maxmin(switch(current_symbol),potential_board)
+
+    end
+    @best_choice, best_score = best_move current_symbol, scores
+    best_score
+  end
+
   def ai_turn?
-    self.whose_turn == 2 || self.whose_turn == 4
+    self.whose_turn == 2 || self.whose_turn == 3 || self.whose_turn == 4
   end
 
   def whose_turn

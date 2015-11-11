@@ -44,7 +44,7 @@ class GamesController < ApplicationController
       @game.save 
     end
 
-    if @game.ai_turn?
+    if @game.ai_turn? && !@game.finished?
       @game.load_ai
       @game.update_board
       @current_player = User.find(@game.whose_turn)
