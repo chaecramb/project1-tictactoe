@@ -12,6 +12,10 @@ class User < ActiveRecord::Base
     self.role.to_s == role_to_compare.to_s
   end
 
+  def self.search(term)
+    User.where("name ILIKE (?)", "%#{term}%").to_a 
+  end
+
   private
   def set_default_role
     self.role ||= 'player'

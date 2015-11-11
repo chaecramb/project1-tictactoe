@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def index
-    @users = User.all_except(current_user)
+    @users = User.all_except(current_user.id).search(params[:search])
   end
 
   def show
@@ -10,7 +10,7 @@ class UsersController < ApplicationController
   private
 
     def user_params
-      params.require(:user).permit(:id)
+      params.require(:user).permit(:id, :search)
     end
 
 end
