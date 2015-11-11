@@ -9,7 +9,7 @@
         <p> Points:  <span class="number"><%= @user.points %></span></p>
         <div class="edit">
         <% if can? :create, Game %>
-          <%= link_to 'Edit profile', edit_user_registration_path %>
+          <%= link_to 'Edit profile', edit_user_registration_path, :class => "edit-button"  %>
         <% end %>
         </div>
       </div>

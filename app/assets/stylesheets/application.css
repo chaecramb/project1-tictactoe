@@ -156,7 +156,7 @@ table {
 
 .games {
   text-align: center;
-  margin: 0 auto 0 auto;
+  margin: 0 auto 30px auto;
   display: block;
   background-color: rgba(153, 204, 255,0.7);
   padding: 15px 15px 15px 15px;
@@ -169,9 +169,14 @@ table {
   margin-right: 30px;
 }
 
-.players a {
+.players .challenge-button {
   font-family: 'Chalk Hand Lettering';
   color: rgba(255, 0, 0, 0.8);
+  font-size: 3em;
+}
+
+.players .edit-button {
+  font-family: 'Chalk Hand Lettering';
   font-size: 3em;
 }
 
@@ -232,3 +237,14 @@ th td {
 .sidebar {
   margin-top: 25px;
 }
+
+.opponent {
+   text-align: center;
+   font-family: 'Chalk Hand Lettering';
+   color: rgba(255, 255, 255, 1);
+   font-size: 4em;
+   margin: 5px;
+}
+
+
+

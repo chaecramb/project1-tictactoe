@@ -12,7 +12,7 @@
           <p> Points:  <span class="number"><%= user.points %></span></p>
           <div class="challenge">
           <% if can? :create, Game %>
-            <%= link_to 'Challenge!', {controller: 'games', action: 'create', game: {player2_id: user.id}}, method: :post %>
+            <%= link_to 'Challenge!', {controller: 'games', action: 'create', game: {player2_id: user.id}}, method: :post, :class => "challenge-button" %>
           <% end %>
           </div>
         </div>
