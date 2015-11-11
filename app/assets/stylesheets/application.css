@@ -19,6 +19,11 @@
     src:url('fonts/Colored-Crayons.ttf') format('truetype');
 } 
 
+@font-face {
+    font-family: 'Monster Unleashed';
+    src:url('fonts/Monster-Unleashed.ttf') format('truetype');
+} 
+
 .players {
   width: 350px;
 }
@@ -153,4 +158,8 @@ table {
 .new-game {
   margin: 40px;
   text-align: center;
+}
+
+.number {
+  font-family: "Monster Unleashed";
 }

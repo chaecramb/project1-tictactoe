@@ -63,8 +63,8 @@ ActiveRecord::Schema.define(version: 20151108131431) do
     t.inet     "current_sign_in_ip"
     t.inet     "last_sign_in_ip"
     t.string   "name"
-    t.integer  "wins"
-    t.integer  "loses"
+    t.integer  "wins", default: 0
+    t.integer  "loses", default: 0
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.string   "user_avatar"
