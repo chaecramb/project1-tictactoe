@@ -19,6 +19,23 @@
     src:url('fonts/Colored-Crayons.ttf') format('truetype');
 } 
 
+.players {
+  width: 350px;
+}
+
+.players, .games, .btn {
+  box-shadow: 10px 10px 5px rgba(30, 30, 30, .6);
+
+}
+
+main {
+  padding-top: 60px;
+}
+
+.alert {
+  opacity: 0.8;
+}
+
 table {
   table-layout: fixed;
 }
@@ -86,6 +103,11 @@ table {
   font-size: 2em;
  }
 
+.alert {
+  margin-top: 100px;
+  text-align: center;
+}
+
  .avatar {
   display: block;
   margin: 0 auto 20px auto;
@@ -126,8 +148,6 @@ table {
   font-family: 'Chalk Hand Lettering';
   color: rgba(255, 0, 0, 0.8);
   font-size: 3em;
-  margin-left: 60px;
-  margin-right: 60px;
 }
 
 .new-game {

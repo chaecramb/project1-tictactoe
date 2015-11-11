@@ -1,8 +1,9 @@
-<main class='container'>
   <section class='row'>
     <div class="col-md-12">
       <div class="new-game">
-      <%= link_to 'Start new game', new_game_path, class: 'btn btn-default btn-lg' %>
+      <% if can? :create, Game %>
+        <%= link_to 'Start new game', new_game_path, class: 'btn btn-default btn-lg' %>
+      <% end %>
       </div>
     </div>
   </section>
@@ -32,5 +33,4 @@
   </section>
 
   <% end %>
-</main>
 
