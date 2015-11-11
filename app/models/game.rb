@@ -114,6 +114,10 @@ class Game < ActiveRecord::Base
     moves.last.player_id == player1_id ? player2_id : player1_id
   end
 
+  def lose_coin_toss?
+    [true,false].sample
+  end
+
   def make_move(options = {})
     moves << Move.new(square: options[:square], player_id: options[:player_id], value: options[:value], game_id: options[:game_id])
     board[options[:square]] = options[:value]

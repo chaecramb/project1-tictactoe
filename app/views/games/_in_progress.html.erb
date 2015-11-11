@@ -78,6 +78,11 @@
           </div></td>
         </tr>
       </table>
+      <% if (current_user.id != @game.player1_id) && (@game.moves.size < 2) %>
+       <h4> You lost the coin toss! </h4>
+       <% elsif (current_user.id = @game.player1_id) && (@game.moves.size < 1) %>
+       <h4> You won the coin toss! </h4>
+      <% end %>
       </div>
 
       <div class="col-md-4 sidebar">

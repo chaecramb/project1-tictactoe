@@ -14,7 +14,7 @@
     <div class="col-md-10 col-md-offset-1">
       <h1> GAMES IN PROGRESS </h1>
       <div class='games'>
-        <% current_user.games.where(winner_id: nil).where(is_draw: nil).each do |game| %>
+        <% current_user.games.order('updated_at ASC').where(winner_id: nil).where(is_draw: nil).each do |game| %>
           <p><%= link_to "#{User.find(game.player1_id).name} vs #{User.find(game.player2_id).name}", game %> last move: <%= "#{game.updated_at}" %></p>
         <% end %>
       </div>
@@ -25,7 +25,7 @@
     <div class="col-md-10 col-md-offset-1">
       <h1> FINISHED GAMES</h1>
       <div class='games'>
-        <% current_user.games.where("winner_id IS NOT NULL or is_draw IS TRUE").each do |game| %>
+        <% current_user.games.order('updated_at ASC').where("winner_id IS NOT NULL or is_draw IS TRUE").each do |game| %>
           <p><%= link_to "#{User.find(game.player1_id).name} vs #{User.find(game.player2_id).name}", game %> finshed: <%= "#{game.updated_at}" %></p>
         <% end %>
       </div>

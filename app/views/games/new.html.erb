@@ -11,7 +11,8 @@
         <%= f.label :player2_id, "Select opponent", :class => "opponent" %><br>
         <%= f.select :player2_id, @users.map {|c| [c.name, c.id] } %>
       </div>
-      <%= f.submit "Battle!", :class => "btn-default btn-lg" %>
+      <p>Toss coin</p>
+      <%= f.submit "Toss coin!", :type => :image, :src => "https://upload.wikimedia.org/wikipedia/commons/2/29/USSR-mongolia_Spaceflight_Coin.png", :class => "coin" %>
     <% end %>
 </div>
 </div>

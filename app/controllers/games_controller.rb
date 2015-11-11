@@ -18,6 +18,9 @@ class GamesController < ApplicationController
     #   User.first.id
     # end
     game.player1_id = current_user.id
+    if game.lose_coin_toss?
+      game.player1_id, game.player2_id = game.player2_id, game.player1_id
+    end
     game.users << player_1 = User.find(game.player1_id)
     game.users << player_2 = User.find(game.player2_id)
     symbols = ['x','o']
@@ -39,7 +42,35 @@ class GamesController < ApplicationController
     unless @game.finished?
       @symbol = @current_player == @player_1 ? @game.player1_symbol : @game.player2_symbol
       @game.save 
-    end 
+    end
+
+    if @game.ai_turn?
+      @game.load_ai
+      @game.update_board
+      @current_player = User.find(@game.whose_turn)
+      @symbol = @current_player == @player_1 ? @game.player1_symbol : @game.player2_symbol
+
+      if @game.moves.size >= 5
+        if @game.winning_game?
+          @game.winner_id = @game.moves.last.player_id
+          winner = User.find(@game.winner_id)
+          winner.wins += 1
+          winner.points += 3
+          winner.save
+          loser = User.find(@game.moves.last(2).first.player_id)
+          loser.loses += 1
+          loser.save
+        elsif @game.drawn_game?
+          @game.is_draw = 'true' 
+          @player_1.draws += 1
+          @player_1.points += 1
+          @player_2.draws += 1
+          @player_2.points += 1
+          @player_1.save
+          @player_2.save 
+        end
+      end 
+    end
   end
 
   def update
