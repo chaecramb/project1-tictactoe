@@ -50,11 +50,24 @@ class GamesController < ApplicationController
     @game.moves << move
     @game.update_board
 
-    if @game.moves.size >= 5
+    if @game.moves.size >= 5 && !@game.ai_playing?
       if @game.winning_game?
         @game.winner_id = @game.moves.last.player_id
+        winner = User.find(@game.winner_id)
+        winner.wins += 1
+        winner.points += 3
+        winner.save
+        loser = User.find(@game.moves.last(2).first.player_id)
+        loser.loses += 1
+        loser.save
       else
         @game.is_draw = 'true' if @game.drawn_game? 
+        @player_1.draws += 1
+        @player_1.points += 1
+        @player_2.draws += 1
+        @player_2.points += 1
+        @player_1.save
+        @player_2.save
       end
     end
 
@@ -67,8 +80,21 @@ class GamesController < ApplicationController
       if @game.moves.size >= 5
         if @game.winning_game?
           @game.winner_id = @game.moves.last.player_id
+          winner = User.find(@game.winner_id)
+          winner.wins += 1
+          winner.points += 3
+          winner.save
+          loser = User.find(@game.moves.last(2).first.player_id)
+          loser.loses += 1
+          loser.save
         else
-          @game.is_draw = 'true' if @game.drawn_game? 
+          @game.is_draw = 'true' if @game.drawn_game?
+          @player_1.draws += 1
+          @player_1.points += 1
+          @player_2.draws += 1
+          @player_2.points += 1
+          @player_1.save
+          @player_2.save 
         end
       end
 

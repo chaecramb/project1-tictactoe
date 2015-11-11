@@ -7,10 +7,14 @@
           <h3 class="player-name"><%= user.name %></h3>
           <p><%= image_tag user.user_avatar.thumb.url, class: 'avatar' %></p>
           <p> Wins:  <span class="number"><%= user.wins %></span></p>
+          <p> Draws:  <span class="number"><%= user.draws %></span></p>
           <p> Losses:  <span class="number"><%= user.loses %></span></p>
+          <p> Points:  <span class="number"><%= user.points %></span></p>
+          <div class="challenge">
           <% if can? :create, Game %>
             <%= link_to 'Challenge!', {controller: 'games', action: 'create', game: {player2_id: user.id}}, method: :post %>
           <% end %>
+          </div>
         </div>
       </div>
     <% end %>

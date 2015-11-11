@@ -24,8 +24,18 @@
     src:url('fonts/Monster-Unleashed.ttf') format('truetype');
 } 
 
+@font-face {
+    font-family: 'Eraser Dust';
+    src:url('fonts/EraserDust.ttf') format('truetype');
+} 
+
+@font-face {
+    font-family: 'Coffee House';
+    src:url('fonts/Coffee-House.ttf') format('truetype');
+} 
+
 .players {
-  width: 350px;
+  width: 370px;
 }
 
 .players, .games, .btn {
@@ -155,11 +165,26 @@ table {
   font-size: 3em;
 }
 
+.players .challenge {
+  margin-top: 10px;
+}
+
 .new-game {
   margin: 40px;
   text-align: center;
 }
 
 .number {
-  font-family: "Monster Unleashed";
+  position: relative;
+  font-family: "Eraser Dust";
+  font-size: 1.5em;
+  top: 8px;
+}
+
+table {
+  margin-top: 25px;
+}
+
+.symbol {
+  text-align: center;
 }
