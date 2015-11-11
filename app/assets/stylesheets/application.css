@@ -250,4 +250,8 @@ th td {
   margin-bottom: 7px;
 }
 
+.dropdown:hover .dropdown-menu {
+display: block;
+}
+
 
