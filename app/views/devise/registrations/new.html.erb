@@ -9,7 +9,7 @@
 
   <div class="field form-group">
     <%= f.label :name %><br />
-    <%= f.text_field :name, autofocus: true, :class => "form-control" %>
+    <%= f.text_field :name, autofocus: true, :maxlength => 13, :class => "form-control" %>
   </div>
 
   <div class="field form-group">
@@ -33,6 +33,11 @@
   <div class="field form-group">
     <%= f.label :user_avatar %><br />
     <%= f.file_field :user_avatar %>
+  </div>
+
+  <div class="field form-group">
+    <%= f.label :desc, "Description" %><br />
+    <%= f.text_field :desc, autocomplete: "off", :maxlength => 55, :height => 5, :class => "form-control" %>
   </div>
 
   <div class="actions form-group">
