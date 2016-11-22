@@ -40,30 +40,23 @@ class Game < ActiveRecord::Base
 
   def load_ai
     ai_id = self.whose_turn
-    if ai_id == 2
+    case ai_id 
+    when 2
       @move = Move.create(player_id: 2 ,game_id: id,square: ai_move, value: ai_symbol)
-    end
-
-    if ai_id == 3
+    when 3
       maxmin(ai_symbol, board)
       @move = Move.create(player_id: 3 ,game_id: id,square: @best_choice, value: ai_symbol)
-    end
-
-    if ai_id == 4
+    when 4
       minmax(ai_symbol, board)
       @move = Move.create(player_id: 4 ,game_id: id,square: @best_choice, value: ai_symbol)
-    end
-
-    if ai_id == 5
+    when 5
       if [true, false].sample
         minmax(ai_symbol, board)
         @move = Move.create(player_id: 5 ,game_id: id,square: @best_choice, value: ai_symbol)
       else
         @move = Move.create(player_id: 5 ,game_id: id,square: ai_move, value: ai_symbol)
       end
-    end
-
-    if ai_id == 6
+    when 6
       if [true, false].sample
         minmax(ai_symbol, board)
         @move = Move.create(player_id: 6 ,game_id: id,square: @best_choice, value: ai_symbol)
@@ -74,7 +67,6 @@ class Game < ActiveRecord::Base
     end
 
     self.moves << @move
-
   end
 
   def score(board)
@@ -167,14 +159,12 @@ class Game < ActiveRecord::Base
     end
   end
 
-  # private
   def winning_game?
     !!WINNING_LINES.detect do |winning_line|
       (winning_line & moves.where(player_id: moves.last.player_id).pluck(:square)).size == 3
     end  
   end
 
-  # private
   def drawn_game?
     board.all?
   end

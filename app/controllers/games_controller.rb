@@ -12,15 +12,12 @@ class GamesController < ApplicationController
 
   def create
     game = Game.create(game_params)
-    # game.player1_id = if current_user
-    #   current_user.id
-    # else 
-    #   User.first.id
-    # end
     game.player1_id = current_user.id
+
     if game.lose_coin_toss?
       game.player1_id, game.player2_id = game.player2_id, game.player1_id
     end
+
     game.users << player_1 = User.find(game.player1_id)
     game.users << player_2 = User.find(game.player2_id)
     symbols = ['x','o']
@@ -138,11 +135,6 @@ class GamesController < ApplicationController
 
     redirect_to @game
   end
-
-
-
-
-
 
 private
 
