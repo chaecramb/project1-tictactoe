@@ -9,6 +9,8 @@ class Game < ActiveRecord::Base
 
   EMPTY_BOARD = [nil,nil,nil,nil,nil,nil,nil,nil,nil]
 
+  AI_IDS = [2,3,4,5,6]
+
   def available_spaces
     ((0..8).to_a - Move.where(game_id: id).pluck(:square))
   end
@@ -27,11 +29,11 @@ class Game < ActiveRecord::Base
   end
 
   def ai_playing?
-    player1_id == 2 || player2_id == 2 || player1_id == 3 || player2_id == 3 ||player1_id == 4 || player2_id == 4 || player1_id == 5 || player2_id == 5 ||player1_id == 6 || player2_id == 6
+    AI_IDS.include?(player1_id) || AI_IDS.include?(players_id)
   end
 
   def ai_symbol
-    ((player1_id == 2) || (player1_id == 3) || (player1_id == 4) || (player1_id == 5) || (player1_id == 6)) ? player1_symbol : player2_symbol
+    AI_IDS.include?(player1_id) ? player1_symbol : player2_symbol
   end
 
   def ai_move
